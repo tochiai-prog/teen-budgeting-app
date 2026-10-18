@@ -68,6 +68,18 @@ These are **assumptions**, not details supplied by the requester:
 5. The launch jurisdiction, age-verification method, retention period, and any required parental process remain undecided and need review before release.
 6. Account deletion initiates removal, but exact backup and legal retention timing needs a documented policy before launch.
 
+## Scope for HW3
+
+- Build story R-05: Spending entries.
+- No real payments. Where the spec says to charge a card, use a
+  "Simulated payment" button and list real payments as a non-goal in
+  the README.
+- No sign-in provider. Where the spec needs a signed-in user, use a
+  name typed into a text box and list real authentication as a
+  non-goal.
+- No database. Keep data in memory on the server and say in the README
+  that it resets on every deploy.
+
 ## Source notes
 
 The FTC describes COPPA as applying to services directed to children under 13 or with actual knowledge that they collect personal information from children under 13: https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa . This draft targets ages 13–19 and does not substitute for jurisdiction-specific legal review.

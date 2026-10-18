@@ -51,7 +51,8 @@
   color: #0f172a;
 }
 
-.field input {
+.field input,
+.field select {
   width: 100%;
   padding: 14px 16px;
   border-radius: 12px;
@@ -60,10 +61,79 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.field input:focus {
+.field input:focus,
+.field select:focus {
   outline: none;
   border-color: #4f46e5;
   box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+}
+
+.sectionHeading {
+  margin: 24px 0 8px;
+  color: #0f172a;
+  font-size: 1.2rem;
+}
+
+.total {
+  margin: 0 0 20px;
+  color: #0f172a;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.entryForm {
+  padding-top: 4px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.history {
+  margin-top: 28px;
+  padding-top: 4px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.entryList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.entryDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #475569;
+}
+
+.entryDetails strong {
+  color: #0f172a;
+}
+
+.entryActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.entryActions .secondaryButton {
+  width: auto;
+  padding: 9px 12px;
+  font-size: 0.9rem;
 }
 
 .checkboxRow {
@@ -133,5 +203,10 @@
 @media (max-width: 640px) {
   .card {
     padding: 24px 20px;
+  }
+
+  .entry {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
