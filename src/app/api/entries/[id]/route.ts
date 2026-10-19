@@ -1,8 +1,8 @@
 import {
   deleteSpendingEntry,
   updateSpendingEntry,
-  type SpendingEntryFields,
 } from "@/lib/spendingEntries";
+import { parseSpendingEntryFields } from "@/lib/spendingEntryValidation";
 
 function getDisplayName(request: Request) {
   return new URL(request.url).searchParams.get("displayName")?.trim() ?? "";
@@ -18,7 +18,21 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const fields = await request.json() as SpendingEntryFields;
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      return Response.json({ message: "The request body must be valid JSON." }, { status: 400 });
+    }
+    throw error;
+  }
+
+  const fields = parseSpendingEntryFields(body);
+  if (!fields) {
+    return Response.json({ message: "Invalid spending entry." }, { status: 422 });
+  }
+
   const result = updateSpendingEntry(displayName, id, fields);
   if (!result) {
     return Response.json({ message: "Entry not found." }, { status: 404 });

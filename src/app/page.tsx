@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { spendingEntryCategories } from "@/lib/spendingEntryValidation";
 import styles from "./page.module.css";
 
 type Step = "welcome" | "name" | "confirm" | "complete" | "blocked";
@@ -41,7 +42,6 @@ type TotalResponse = {
   message?: string;
 };
 
-const categories = ["Rides", "Shopping", "Food delivery", "Entertainment", "Other"];
 const emptyForm: EntryForm = {
   amount: "",
   date: "",
@@ -410,7 +410,7 @@ export default function Home() {
                     onChange={(event) => setForm({ ...form, category: event.target.value })}
                   >
                     <option value="">Choose a category</option>
-                    {categories.map((category) => (
+                    {spendingEntryCategories.map((category) => (
                       <option key={category} value={category}>{category}</option>
                     ))}
                   </select>
